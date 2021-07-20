@@ -1,0 +1,10 @@
+const int maxncr = 1000;
+long long C[maxncr + 1][maxncr + 1];
+void init_ncr(){
+	C[0][0] = 1;
+	for (int n = 1; n <= maxncr; ++n) {
+		C[n][0] = C[n][n] = 1;
+		for (int k = 1; k < n; ++k)
+			C[n][k] = C[n - 1][k - 1] + C[n - 1][k];
+	}
+}

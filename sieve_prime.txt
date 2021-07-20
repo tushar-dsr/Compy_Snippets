@@ -1,0 +1,20 @@
+//prime numbers till 10^6
+vector<int> sieveOfEratosthenes(int n)
+    {
+        bool prime[n+1];
+	vector<int>ans (n+1,0);
+    memset(prime, true, sizeof(prime)); 
+
+    vector<int> ans;
+    for (int p=2; p<=n; p++) 
+    { 
+        if (prime[p] == true) 
+        { 
+            for (int i=p; i<=n; i += p) 
+                prime[i] = false; 
+		ans++;
+        } 
+    } 
+  
+    return ans;
+    }
