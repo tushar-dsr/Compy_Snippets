@@ -1,0 +1,24 @@
+int n =100001;
+vector<pii> adj[100001];
+vector<bool> vis(100001);
+int cnt=0;
+//Spanning tree greedily from any point
+int prim(int x){
+    int cost=0;
+    set<pii> se;
+    se.insert({0,x});
+    while(!se.empty()){
+        pii x= (*se.begin());
+        se.erase(se.begin());
+        if(vis[x.second]==true) continue;
+        vis[x.second]=true;
+        cost+=x.first;
+        cnt++;
+        for(auto it: adj[x.second]){
+            if(!vis[it.second]){
+                se.insert(it);
+            }
+        }
+    }
+    return cost;
+}
